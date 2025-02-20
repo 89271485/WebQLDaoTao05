@@ -25,7 +25,7 @@ namespace WebQLDaoTao
                 double diem= double.Parse(((TextBox)gvKetQua.Rows[i].FindControl("txtDiem")).Text);
                 kqDAO.Update(id,diem);
             }
-            Response.Write("<script> alert'(Lưu điểm thành côngg)' </script>");
+            Response.Write("<script> alert'(Thay đổi thành công)' </script>");
         }
     }
 }
