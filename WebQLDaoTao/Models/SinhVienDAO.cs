@@ -74,5 +74,26 @@ namespace WebQLDaoTao.Models
             return cmd.ExecuteNonQuery();
         }
         //.....
+        //phuong thuc them sinh vien vao CSDL
+        public int Insert(SinhVien sv)
+        {
+            //1.Mo ket noi CSDL
+            SqlConnection conn = new
+            SqlConnection(ConfigurationManager.ConnectionStrings["QLDaoTao_ConStr"].ConnectionString);
+            conn.Open();
+            //2.tao truy van
+            SqlCommand cmd = new SqlCommand("insert into sinhvien (masv, hosv, tensv, gioitinh, ngaysinh, noisinh, diachi, makh) values(@masv, @hosv, @tensv, @gioitinh, @ngaysinh, @noisinh, @diachi, @makh)",
+        conn);
+            cmd.Parameters.AddWithValue("@masv", sv.MaSV);
+            cmd.Parameters.AddWithValue("@hosv", sv.HoSV);
+            cmd.Parameters.AddWithValue("@tensv", sv.TenSV);
+            cmd.Parameters.AddWithValue("@gioitinh", sv.GioiTinh);
+            cmd.Parameters.AddWithValue("@ngaysinh", sv.NgaySinh);
+            cmd.Parameters.AddWithValue("@noisinh", sv.NoiSinh);
+            cmd.Parameters.AddWithValue("@diachi", sv.DiaChi);
+            cmd.Parameters.AddWithValue("@makh", sv.MaKH);
+            //3.thuc thi ket qua;
+            return cmd.ExecuteNonQuery();
+        }
     }
 }
